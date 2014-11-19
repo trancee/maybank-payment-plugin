@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:background="@drawable/my_border" 
+	    android:orientation="vertical"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+		android:layout_gravity="top"
+		android:id="@+id/ly"
+		android:visibility="invisible" >
+
+ 	 <ImageView 	   
+ 	   android:layout_gravity="center_horizontal"
+	   android:layout_width="wrap_content"
+       android:layout_height="wrap_content" 
+       android:adjustViewBounds="true" 
+       android:scaleType="centerCrop"
+	   android:src="@drawable/topbar2x" 
+	   android:id="@+id/imageview"
+	   android:visibility="invisible"
+	   android:layout_marginLeft="2dip"
+	   android:layout_marginRight="2dip" />
+			   
+ 
+  	<WebView  
+	  	android:id="@+id/webview"
+	  	android:layout_gravity="center"
+	  	android:layout_width="298dip"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="1dip"
+		android:visibility="invisible"
+		 />
+                
+</LinearLayout>
+
+

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	id="com.airasia.plugins.m2u"
+	version="0.0.1">
+
+	<name>Maybank Payment Plugin</name>
+	<description>M2U Mobile Payment Plugin</description>
+	<license>MIT</license>
+
+	<repo>https://github.com/trancee/maybank-payment-plugin</repo>
+	<issue>https://github.com/trancee/maybank-payment-plugin/issues</issue> 
+
+	<engines>
+		<engine name="cordova" version=">=3.0.0" />
+	</engines>	
+
+	<js-module src="www/maybankPayment.js" name="MaybankPayment">
+		<clobbers target="cordova.plugins.maybankPayment" />
+	</js-module>
+
+	<!-- ios -->
+	<platform name="ios">
+		<!-- Cordova >= 2.8 -->
+		<config-file target="config.xml" parent="/*">
+			<feature name="BarcodeScanner">
+				<param name="ios-package" value="CDVBarcodeScanner" />
+			</feature>
+		</config-file>
+
+		<resource-file src="src/ios/scannerOverlay.xib" />
+
+		<header-file src="src/ios/zxing-all-in-one.h" />
+
+		<source-file src="src/ios/CDVBarcodeScanner.mm" compiler-flags="-fno-objc-arc" />
+		<source-file src="src/ios/zxing-all-in-one.cpp" />
+
+		<framework src="libiconv.dylib" />
+		<framework src="AVFoundation.framework" />
+		<framework src="AssetsLibrary.framework" />
+		<framework src="CoreVideo.framework" />
+		<framework src="QuartzCore.framework" />
+	</platform>
+
+	<!-- android -->
+	<platform name="android">
+
+		<source-file src="src/android/com/airasia/plugins/m2u/MaybankPayment.java" target-dir="src/com/airasia/plugins/m2u" />
+
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="MaybankPayment">
+				<param name="android-package" value="com.airasia.plugins.m2u.MaybankPayment" />
+			</feature>
+		</config-file>
+
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<activity
+				android:name="com.gsc.webviewDisplay.Webscreen"
+				android:theme="@android:style/Theme.Translucent.NoTitleBar"
+				android:screenOrientation="portrait">
+				<intent-filter>
+					<action android:name="com.airasia.plugins.m2u.START"/>
+					<category android:name="android.intent.category.DEFAULT"/>
+				</intent-filter>
+			</activity>
+		</config-file>
+
+		<config-file target="AndroidManifest.xml" parent="/manifest">
+			<uses-permission android:name="android.permission.INTERNET" />
+			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+		</config-file>
+
+		<source-file src="src/android/AndroidM2UPluginV1.0.1.jar" target-dir="libs"/>
+
+
+
+		<source-file src="src/android/LibraryProject/drawable/my_border.xml" target-dir="res/drawable"/>
+		<source-file src="src/android/LibraryProject/drawable/topbar2x.png" target-dir="res/drawable"/>
+
+		<source-file src="src/android/LibraryProject/layout/webscreen.xml" target-dir="res/layout"/>
+
+		<source-file src="src/android/LibraryProject/values/colors.xml" target-dir="res/values"/>
+		<source-file src="src/android/LibraryProject/values/styles.xml" target-dir="res/values"/>
+
+	</platform>
+
+</plugin>
