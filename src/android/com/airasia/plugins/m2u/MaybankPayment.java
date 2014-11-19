@@ -26,6 +26,11 @@ import org.apache.cordova.PluginResult;
  * @sa https://github.com/apache/cordova-android/blob/master/framework/src/org/apache/cordova/CordovaPlugin.java
  */
 public class MaybankPayment extends CordovaPlugin {
+	public static final int REQUEST_CODE = 0x0ba7c0de;
+
+	private static final String START = "start";
+	private static final String START_INTENT = "com.airasia.plugins.m2u.START";
+
 	private static final String LOG_TAG = "MaybankPayment";
 
 	private CallbackContext callbackContext;
@@ -54,13 +59,6 @@ public class MaybankPayment extends CordovaPlugin {
 	 */
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) {
-		public static final int REQUEST_CODE = 0x0ba7c0de;
-
-		private static final String START = "start";
-		private static final String START_INTENT = "com.airasia.plugins.m2u.START";
-
-		private static final String LOG_TAG = "MaybankPayment";
-
 		this.callbackContext = callbackContext;
 
 		if (action.equals(START)) {
