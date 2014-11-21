@@ -13,12 +13,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.PluginResult;
+
+import com.gsc.webviewDisplay.Webscreen;
 
 /**
  * This calls out to the Maybank Payment plugin and returns the result.
@@ -73,12 +76,21 @@ public class MaybankPayment extends CordovaPlugin {
 	 * Starts an intent to start the payment.
 	 */
 	public void start() {
+		/*
 		Intent intentStart = new Intent(START_INTENT);
 		intentStart.addCategory(Intent.CATEGORY_DEFAULT);
 		// avoid calling other phonegap apps
 		intentStart.setPackage(this.cordova.getActivity().getApplicationContext().getPackageName());
 
-		this.cordova.startActivityForResult((CordovaPlugin) this, intentStart, REQUEST_CODE);
+		Context context=this.cordova.getActivity().getApplicationContext();
+
+		this.cordova.startActivityForResult((CordovaPlugin) this, ws.show(context), REQUEST_CODE);
+		*/
+		Webscreen ws = new Webscreen();
+		ws.initWebViewURL("https://m2umobilesit.maybank.com.my/mbb/Mobile/m2uMerchantLogin.do?sendString=Login", ""+365, true, 150, true, "99999", true, "9999999999999", "https://www.abc.com");
+
+		Activity activity=this.cordova.getActivity();
+		this.cordova.startActivityForResult((CordovaPlugin) this, ws.show(activity), REQUEST_CODE);
 	}
 
 	/**
