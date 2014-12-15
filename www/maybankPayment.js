@@ -21,6 +21,8 @@
 		 * @param {Function} errorCallback
 		 */
 		MaybankPayment.prototype.start = function (successCallback, errorCallback) {
+			var args = [];
+
 			if (errorCallback == null) {
 				errorCallback = function () {
 				};
@@ -36,7 +38,7 @@
 				return;
 			}
 
-			exec(successCallback, errorCallback, 'MaybankPayment', 'start', []);
+			exec(successCallback, errorCallback, 'MaybankPayment', 'start', args);
 		};
 
 		var maybankPayment = new MaybankPayment();

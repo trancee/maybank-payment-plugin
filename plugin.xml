@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	id="com.airasia.plugins.m2u"
-	version="0.0.1">
+	version="0.1.1">
 
 	<name>Maybank Payment Plugin</name>
 	<description>M2U Mobile Payment Plugin</description>
@@ -28,12 +28,15 @@
 			</feature>
 		</config-file>
 
+		<header-file src="src/ios/CDVMaybankPayment.h" />
+		<source-file src="src/ios/CDVMaybankPayment.m" />
+
 		<header-file src="src/ios/M2UController.h" />
 		<header-file src="src/ios/DDSocialDialog.h" />
 		<header-file src="src/ios/DialogWeb Connection.h" />
 
-		<source-file src="src/ios/LibM2UPayment_device.a" compiler-flags="-fno-objc-arc" />
-		<source-file src="src/ios/LibM2UPayment_simulator.a" compiler-flags="-fno-objc-arc" />
+		<source-file src="src/ios/LibM2UPayment_device.a" />
+		<source-file src="src/ios/LibM2UPayment_simulator.a" />
 
 		<resource-file src="src/ios/topBar.png" />
 		<resource-file src="src/ios/topBar@2x.png" />
@@ -42,6 +45,8 @@
 		<resource-file src="src/ios/168x28.png" />
 		<resource-file src="src/ios/216x36.png" />
 		<resource-file src="src/ios/300x50.png" />
+
+		<framework src="UIKit.framework" />
 
 	</platform>
 
