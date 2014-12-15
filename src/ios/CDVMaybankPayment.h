@@ -1,7 +1,10 @@
 #import <UIKit/UIKit.h>
 #import "M2UController.h"
 
-@interface MaybankPaymentController :UIViewController<M2UDelegate> {
+#import <Cordova/CDV.h>
+#import <Cordova/CDVPlugin.h>
+
+@interface CDVMaybankPayment :UIViewController<M2UDelegate> {
 	M2UController *paymentController;
 }
 
