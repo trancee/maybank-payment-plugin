@@ -21,25 +21,28 @@
 
 	<!-- ios -->
 	<platform name="ios">
-		<!-- Cordova >= 2.8 -->
+
 		<config-file target="config.xml" parent="/*">
-			<feature name="BarcodeScanner">
-				<param name="ios-package" value="CDVBarcodeScanner" />
+			<feature name="MaybankPayment">
+				<param name="ios-package" value="CDVMaybankPayment" />
 			</feature>
 		</config-file>
 
-		<resource-file src="src/ios/scannerOverlay.xib" />
+		<header-file src="src/ios/M2UController.h" />
+		<header-file src="src/ios/DDSocialDialog.h" />
+		<header-file src="src/ios/DialogWeb Connection.h" />
 
-		<header-file src="src/ios/zxing-all-in-one.h" />
+		<source-file src="src/ios/LibM2UPayment_device.a" compiler-flags="-fno-objc-arc" />
+		<source-file src="src/ios/LibM2UPayment_simulator.a" compiler-flags="-fno-objc-arc" />
 
-		<source-file src="src/ios/CDVBarcodeScanner.mm" compiler-flags="-fno-objc-arc" />
-		<source-file src="src/ios/zxing-all-in-one.cpp" />
+		<resource-file src="src/ios/topBar.png" />
+		<resource-file src="src/ios/topBar@2x.png" />
+		<resource-file src="src/ios/close_btn.png" />
+		<resource-file src="src/ios/120x20.png" />
+		<resource-file src="src/ios/168x28.png" />
+		<resource-file src="src/ios/216x36.png" />
+		<resource-file src="src/ios/300x50.png" />
 
-		<framework src="libiconv.dylib" />
-		<framework src="AVFoundation.framework" />
-		<framework src="AssetsLibrary.framework" />
-		<framework src="CoreVideo.framework" />
-		<framework src="QuartzCore.framework" />
 	</platform>
 
 	<!-- android -->
